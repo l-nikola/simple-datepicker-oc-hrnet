@@ -1,6 +1,6 @@
 {
   "name": "simple-datepicker-oc-hrnet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple customizable React datePicker component",
   "main": "src/index.js",
   "files": [
