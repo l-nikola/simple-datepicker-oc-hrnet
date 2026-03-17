@@ -1,70 +1,238 @@
-# Getting Started with Create React App
+# DatePicker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A customizable React date picker component.
 
-## Available Scripts
+<img src="./screenshots/preview.png" alt="DatePicker preview" width="400" />
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm install componentName
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+or
 
-### `npm test`
+```bash
+pnpm install componentName
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Basic usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx
+import { useState } from "react";
+import DatePicker from "componentName";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+export default function App() {
+  const [date, setDate] = useState();
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  return (
+    <DatePicker value={date} onChange={setDate} label="Date de naissance" />
+  );
+}
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Props
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Prop              | Type                                                      | Default     | Description                                  |
+| ----------------- | --------------------------------------------------------- | ----------- | -------------------------------------------- |
+| `value`           | `Date`                                                    | `undefined` | Selected date                                |
+| `onChange`        | `(date: Date) => void`                                    | —           | Callback called on selection                 |
+| `label`           | `string`                                                  | —           | Field label                                  |
+| `locale`          | `"fr"` \| `"en"`                                          | `undefined` | Language of the calendar and date format     |
+| `captionLayout`   | `"dropdown"` \| `"dropdown-years"` \| `"dropdown-months"` | `"label"`   | Month/year selector style                    |
+| `showTodayButton` | `boolean`                                                 | `false`     | Displays a button to select the current date |
+| `className`       | `string`                                                  | —           | CSS class to change the style of the input   |
+| `popupClassName`  | `string`                                                  | —           | CSS class to modify the calendar popup       |
+| `error`           | `boolean`                                                 | `false`     | Displays the field in error state            |
+| `helperText`      | `string`                                                  | —           | Error message displayed below the field      |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Controlled component
 
-## Learn More
+The `DatePicker` is a **controlled component**: it does not manage its own internal state. The `value` and `onChange` props are required to make it work correctly.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> ⚠️ Do not declare a local `useState` inside the `DatePicker` — always manage the value from the parent component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+// ✅ Correct — state is managed by the parent
+const [date, setDate] = useState(null);
 
-### Code Splitting
+<DatePicker value={date} onChange={setDate} label="Date of birth" />;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```jsx
+// ❌ Incorrect — do not manage the value inside the component itself
+export default function DatePicker({ label }) {
+  const [value, setValue] = useState(null); // ← wrong
+  ...
+}
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Examples
 
-### Making a Progressive Web App
+### With the “Today” button and the French locale
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```jsx
+<DatePicker
+  value={date}
+  onChange={setDate}
+  label="Date of birth"
+  locale="fr"
+  showTodayButton
+/>
+```
 
-### Advanced Configuration
+<img src="./screenshots/exToday.png" alt="Example today button + French locale" width="400" />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### With a dropdown month/year selector
 
-### Deployment
+```jsx
+<DatePicker
+  value={date}
+  onChange={setDate}
+  label="Date of birth"
+  captionLayout="dropdown"
+/>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<img src="./screenshots/exDropdown.png" alt="Example with dropdown" width="400" />
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Style customization
+
+The component exposes two props for customizing styles: `className` on the label and `popupClassName` on the calendar popup.
+
+### Example
+
+```jsx
+<DatePicker
+  value={date}
+  onChange={setDate}
+  label="Date"
+  className="my-datepicker"
+  popupClassName="my-datepicker-popup"
+  captionLayout="dropdown"
+  showTodayButton
+/>
+```
+
+```css
+/* INPUT STYLE */
+/* Input style */
+.my-datepicker .dp-trigger {
+  border-radius: 50px;
+  border-color: blue;
+  background-color: bisque;
+}
+
+/* Label style when a date is selected */
+.my-datepicker .dp-label.dp-label-displayed {
+  color: blue;
+  border: 1px solid blue;
+  background-color: bisque;
+  border-radius: 50px;
+}
+
+/* Style of the value in the input */
+.my-datepicker .dp-value {
+  color: blue;
+}
+
+/* Placeholder style in the input */
+.my-datepicker .dp-placeholder {
+  color: blue;
+}
+
+/* Backdrop (only visible on mobile devices) */
+.my-datepicker .dp-backdrop {
+  background-color: black;
+}
+
+/* POPUP STYLE */
+/* Calendar container style */
+.my-datepicker-popup {
+  background-color: bisque;
+  border-color: blue;
+  border-radius: 25px;
+}
+
+/* Style of the “Today” button */
+.my-datepicker-popup .dp-popup-today-btn {
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 50px;
+}
+```
+
+### Available classes
+
+#### With `className`
+
+| Class                                         | Description                               |
+| --------------------------------------------- | ----------------------------------------- |
+| `.my-datepicker .dp-trigger`                  | Input style                               |
+| `.my-datepicker .dp-placeholder`              | Placeholder style in the input            |
+| `.my-datepicker .dp-value`                    | Style of the value in the input           |
+| `.my-datepicker .dp-label.dp-label-displayed` | Label style when a date is selected       |
+| `.my-datepicker .dp-backdrop`                 | Backdrop (only visible on mobile devices) |
+
+#### With `popupClassName`
+
+| Class                                      | Description                 |
+| ------------------------------------------ | --------------------------- |
+| `.my-datepicker-popup`                     | Calendar container style    |
+| `.my-datepicker-popup .dp-popup-today-btn` | Style of the “Today” button |
+
+#### Calendar styles (`react-day-picker`)
+
+The `rdp-*` classes come from `react-day-picker`. You can override them via `popupClassName`:
+
+```css
+.my-datepicker-popup {
+  /* Selected date */
+  & .rdp-root {
+    --rdp-selected-border: 1px solid blue;
+  }
+
+  /* Chevrons */
+  & .rdp-chevron {
+    fill: blue;
+  }
+
+  /* Today's date */
+  & .rdp-today .rdp-day_button {
+    color: blue;
+  }
+}
+```
+
+<img src="./screenshots/style.png" alt="Example with dropdown" width="400" />
+
+> For the complete list of `rdp-*` classes, see the [react-day-picker documentation](https://daypicker.dev).
+
+---
+
+## Screenshots
+
+| Close                              | Open                            | Mobile                              |
+| ---------------------------------- | ------------------------------- | ----------------------------------- |
+| ![Close](./screenshots/closed.png) | ![Open](./screenshots/open.png) | ![Mobile](./screenshots/mobile.png) |
+
+---
+
+## Dependencies
+
+- [react-day-picker](https://daypicker.dev) — Calendar
+- [date-fns](https://date-fns.org) — Locale management
+- [lucide-react](https://lucide.dev) — Calendar icon
+- [dayjs](https://day.js.org) — Recommended for timezone-safe date formatting
