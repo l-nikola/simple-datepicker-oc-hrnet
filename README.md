@@ -2,20 +2,20 @@
 
 A customizable React date picker component.
 
-<img src="./screenshots/preview.png" alt="DatePicker preview" width="400" />
+<img src="./src/assets/preview.png" alt="DatePicker preview" width="400" />
 
 ---
 
 ## Installation
 
 ```bash
-npm install componentName
+npm install simple-datepicker-oc-hrnet
 ```
 
 or
 
 ```bash
-pnpm install componentName
+pnpm install simple-datepicker-oc-hrnet
 ```
 
 ---
@@ -24,7 +24,7 @@ pnpm install componentName
 
 ```jsx
 import { useState } from "react";
-import DatePicker from "componentName";
+import DatePicker from "simple-datepicker-oc-hrnet";
 
 export default function App() {
   const [date, setDate] = useState();
@@ -91,7 +91,7 @@ export default function DatePicker({ label }) {
 />
 ```
 
-<img src="./screenshots/exToday.png" alt="Example today button + French locale" width="400" />
+<img src="./src/assets/exToday.png" alt="Example today button + French locale" width="400" />
 
 ### With a dropdown month/year selector
 
@@ -104,7 +104,7 @@ export default function DatePicker({ label }) {
 />
 ```
 
-<img src="./screenshots/exDropdown.png" alt="Example with dropdown" width="400" />
+<img src="./src/assets/exDropdown.png" alt="Example with dropdown" width="400" />
 
 ---
 
@@ -216,7 +216,7 @@ The `rdp-*` classes come from `react-day-picker`. You can override them via `pop
 }
 ```
 
-<img src="./screenshots/style.png" alt="Example with dropdown" width="400" />
+<img src="./src/assets/style.png" alt="Example with dropdown" width="400" />
 
 > For the complete list of `rdp-*` classes, see the [react-day-picker documentation](https://daypicker.dev).
 
@@ -224,9 +224,9 @@ The `rdp-*` classes come from `react-day-picker`. You can override them via `pop
 
 ## Screenshots
 
-| Close                              | Open                            | Mobile                              |
-| ---------------------------------- | ------------------------------- | ----------------------------------- |
-| ![Close](./screenshots/closed.png) | ![Open](./screenshots/open.png) | ![Mobile](./screenshots/mobile.png) |
+| Close                             | Open                           | Mobile                             |
+| --------------------------------- | ------------------------------ | ---------------------------------- |
+| ![Close](./src/assets/closed.png) | ![Open](./src/assets/open.png) | ![Mobile](./src/assets/mobile.png) |
 
 ---
 
