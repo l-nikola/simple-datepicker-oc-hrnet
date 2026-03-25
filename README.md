@@ -2,7 +2,7 @@
 
 A customizable React date picker component.
 
-<img src="./src/assets/preview.png" alt="DatePicker preview" width="400" />
+<img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/preview.png" alt="DatePicker preview" width="400" />
 
 ---
 
@@ -91,7 +91,7 @@ export default function DatePicker({ label }) {
 />
 ```
 
-<img src="./src/assets/exToday.png" alt="Example today button + French locale" width="400" />
+<img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/exToday.png" alt="Example today button + French locale" width="400" />
 
 ### With a dropdown month/year selector
 
@@ -104,7 +104,7 @@ export default function DatePicker({ label }) {
 />
 ```
 
-<img src="./src/assets/exDropdown.png" alt="Example with dropdown" width="400" />
+<img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/exDropdown.png" alt="Example with dropdown" width="400" />
 
 ---
 
@@ -216,7 +216,7 @@ The `rdp-*` classes come from `react-day-picker`. You can override them via `pop
 }
 ```
 
-<img src="./src/assets/style.png" alt="Example with dropdown" width="400" />
+<img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/style.png" alt="Example style" width="400" />
 
 > For the complete list of `rdp-*` classes, see the [react-day-picker documentation](https://daypicker.dev).
 
@@ -224,9 +224,9 @@ The `rdp-*` classes come from `react-day-picker`. You can override them via `pop
 
 ## Screenshots
 
-| Close                             | Open                           | Mobile                             |
-| --------------------------------- | ------------------------------ | ---------------------------------- |
-| ![Close](./src/assets/closed.png) | ![Open](./src/assets/open.png) | ![Mobile](./src/assets/mobile.png) |
+| Close                                                                                                                                  | Open                                                                                                                                | Mobile                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/closed.png" alt="Close" width="400" /> | <img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/open.png" alt="Open" width="400" /> | <img src="https://raw.githubusercontent.com/l-nikola/simple-datepicker-oc-hrnet/main/src/assets/mobile.png" alt="Mobile" width="400" /> |
 
 ---
 
